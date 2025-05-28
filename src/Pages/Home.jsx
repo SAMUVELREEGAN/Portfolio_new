@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <div id="home">
-        <LandingPage />
+        {/* <LandingPage /> */}
       </div>
       {/* <ScrollMarquee /> */}
       <Details />
@@ -24,7 +24,7 @@ const Home = () => {
       </div>
       <Education />
       <div id="skills">
-        <Skills />
+        {/* <Skills /> */}
       </div>
       <div id="projects">
         {/* <MyProject /> */}

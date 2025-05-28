@@ -26,14 +26,13 @@
     "react-modal": "^3.16.3",
     "react-router-dom": "^7.6.1",
     "react-slick": "^0.30.3",
-    "react-three": "^0.9.7",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
+    "@vitejs/plugin-react": "^4.5.0",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",

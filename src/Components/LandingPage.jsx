@@ -5,6 +5,7 @@ import { Environment, OrbitControls, Bounds } from "@react-three/drei";
 import { MyModel } from "./MyModel";
 import { useNavigate } from "react-router-dom";
 import { landingpara } from "../Data/LandingPara";
+import './LandingPage.css'
 
 const LandingPage = () => {
   const [userName, setUserName] = useState("");
@@ -112,16 +113,17 @@ const LandingPage = () => {
 
           {/* 3D Model Column */}
           <Col xs={12} md={5}>
-            <div style={{ width: "100%", height: "500px" }} className="model-3d">
-              <Canvas style={{ width: "100%", height: "100%" }}>
-                <OrbitControls makeDefault />
-                <Environment preset="studio" />
-                <Bounds fit clip observe margin={0.2}>
-                  <MyModel />
-                </Bounds>
-              </Canvas>
-            </div>
-          </Col>
+  <div style={{ width: "100%", height: "500px" }} className="model-3d">
+    <Canvas style={{ width: "100%", height: "100%" }}>
+      <OrbitControls makeDefault />
+      <Environment preset="studio" />
+      <Bounds fit clip observe margin={0.2}>
+        <MyModel />
+      </Bounds>
+    </Canvas>
+  </div>
+</Col>
+
         </Row>
 
         {/* Modal for user name */}

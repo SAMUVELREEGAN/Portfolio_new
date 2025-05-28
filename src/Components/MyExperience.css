@@ -1,0 +1,121 @@
+.experience-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.experience-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+.circle-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #ecf0f1;
+  border-radius: 50%;
+  color: #2c3e50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.circle:hover {
+  background-color: #d0e3ff;
+}
+
+.circle.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.experience-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.4s ease;
+}
+
+.experience-card:hover {
+  transform: scale(1.02);
+}
+
+.experience-icon-box {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #3498db;
+}
+
+.experience-details {
+  text-align: left;
+}
+
+.company-name {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  color: #555;
+}
+
+.info-icon {
+  margin-right: 8px;
+  color: #3498db;
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.experience-background {
+  height: auto;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 2rem 0;
+}
+
+/* Image Animation */
+.experience-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  animation: floatImage 2s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-35px); }
+}

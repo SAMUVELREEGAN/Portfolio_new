@@ -1,0 +1,17 @@
+/* index.css or App.css */
+
+:root {
+  --bg-color: #ffffff;        /* White */
+  --text-color: #1e1e1e;      /* Near black for contrast */
+  --btn-bg-color: #1976d2;    /* Blue */
+  --btn-text-color: #ffffff;
+  --third-color: #f0f0f0;     /* Ash gray (muted tone) */
+}
+
+[data-theme='dark'] {
+  --bg-color: #000000;        /* Black */
+  --text-color: #e0e0e0;      /* Light gray for readability */
+  --btn-bg-color: #8e24aa;    /* Deep purple */
+  --btn-text-color: #ffffff;
+  --third-color: #29474c;     /* Teal/Gray-Match (goes well with purple) */
+}

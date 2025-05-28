@@ -1,0 +1,93 @@
+/* Scroll Container */
+.education-scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 20px;
+}
+
+/* Wrapper: horizontal scroll + center content */
+.education-wrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: max-content;
+}
+
+/* Card Styles */
+.education-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 25px;
+  width: 390px;
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Steps */
+.card-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.step-line {
+  width: 4px;
+  background-color: #007bff;
+  border-radius: 2px;
+}
+
+.step-content {
+  background: #f9f9f9;
+  border-left: 4px solid #007bff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex: 1;
+}
+
+.step-content h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+
+.step-content p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .education-scroll-container {
+    padding: 10px;
+  }
+
+  .education-wrapper {
+    justify-content: flex-start;
+  }
+
+  .education-card {
+    width: 280px;
+  }
+}

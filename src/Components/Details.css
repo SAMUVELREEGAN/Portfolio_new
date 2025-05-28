@@ -1,0 +1,47 @@
+/* === Text Letter Animation === */
+.letter-animation span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.letter-animation.animate span {
+  animation: riseUp 1s forwards;
+}
+
+.letter-animation.animate span:nth-child(n) {
+  animation-delay: calc(var(--i) * 0.05s);
+}
+
+@keyframes riseUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Image Container === */
+.image-hover-wrapper {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  overflow: hidden;
+  touch-action: auto; /* essential for touch drag */
+}
+
+/* === Mobile subtle bounce fallback (optional) === */
+@media (max-width: 768px) {
+  .image-hover-wrapper {
+    animation: subtleBounce 4s ease-in-out infinite !important;
+  }
+
+  @keyframes subtleBounce {
+    0%, 100% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+      transform: rotateX(2deg) rotateY(-2deg);
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.marquee-container {
+  width: 100%;
+  height: 100px;
+  background-color: var(--btn-bg-color);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-track {
+  display: flex;
+  width: fit-content;
+  animation: scrollLeft 20s linear infinite;
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  height: 100%;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0 2rem;
+}
+
+.marquee-icon {
+  margin-right: 10px;
+  color: #f06529; /* Orange-ish */
+}
+
+.marquee-text {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+/* Keyframes for horizontal scroll */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

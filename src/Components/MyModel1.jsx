@@ -1,0 +1,770 @@
+import { useGLTF } from '@react-three/drei'
+
+
+export function MyModel1(props) {
+  const { nodes, materials } = useGLTF('/home2.glb')
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder002_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder002_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder005_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder005_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder006_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder006_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder007_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder007_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder008_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder008_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder009_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder009_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder023_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder023_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder023_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder023_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder024_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder024_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder024_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder024_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder026_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder026_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder027_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder027_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder028_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder028_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder030_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder030_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder032_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder032_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder032_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder034_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder034_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder035_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder035_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder036_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder036_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder037_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder037_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder038_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder038_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder052_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder052_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder052_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder052_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder053_Material001_0.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder053_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder053_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder053_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder055_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder055_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder056_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder056_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder057_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder057_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder059_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder059_��������������_0'].geometry}
+          material={materials.material}
+        />
+      </group>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder061_Material003_0.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes['Cylinder061_��������������_0'].geometry}
+          material={materials.material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cylinder061_Material002_0.geometry}
+          material={materials['Material.002']}
+        />
+      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder001_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder003_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder004_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder010_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder011_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder012_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder013_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder014_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder015_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder016_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder017_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder018_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder019_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder020_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder021_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder022_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder025_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder029_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder031_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube_Material001_0.geometry}
+        material={materials['Material.001']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube001_Material001_0.geometry}
+        material={materials['Material.001']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube002_Material005_0.geometry}
+        material={materials['Material.005']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder039_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder040_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder041_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder042_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder043_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder044_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder045_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder046_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder047_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder048_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder049_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder050_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes['Cylinder051_��������������_0'].geometry}
+        material={materials.material}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder054_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder058_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cylinder060_Material002_0.geometry}
+        material={materials['Material.002']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube003_Material001_0.geometry}
+        material={materials['Material.001']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube004_Material004_0.geometry}
+        material={materials['Material.004']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Circle_Material005_0.geometry}
+        material={materials['Material.005']}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={100}
+      />
+    </group>
+  )
+}
+
+useGLTF.preload('/home2.glb')

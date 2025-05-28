@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useFrame } from '@react-three/fiber'; // ✅ import useFrame for animation
+// import { useFrame } from '@react-three/fiber'; // ✅ import useFrame for animation
 import { useGLTF } from '@react-three/drei';
 
 
@@ -8,11 +8,11 @@ export function MyModel(props) {
   const { nodes, materials } = useGLTF('/home1.glb');
 
   // ✅ Auto-rotation animation
-  useFrame(() => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.001;
-    }
-  });
+  // useFrame(() => {
+  //   if (groupRef.current) {
+  //     groupRef.current.rotation.y += 0.001;
+  //   }
+  // });
 
   return (
     <group ref={groupRef} {...props} dispose={null}>

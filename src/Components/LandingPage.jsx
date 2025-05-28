@@ -112,7 +112,7 @@ const LandingPage = () => {
 
           {/* 3D Model Column */}
           <Col xs={12} md={5}>
-            <div style={{ width: "100%", height: "500px" }}>
+            {/* <div style={{ width: "100%", height: "500px" }}>
               <Canvas style={{ width: "100%", height: "100%" }}>
                 <OrbitControls makeDefault />
                 <Environment preset="studio" />
@@ -120,7 +120,7 @@ const LandingPage = () => {
                   <MyModel />
                 </Bounds>
               </Canvas>
-            </div>
+            </div> */}
           </Col>
         </Row>
 

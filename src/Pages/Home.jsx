@@ -16,7 +16,7 @@ const Home = () => {
       <div id="home">
         {/* <LandingPage /> */}
       </div>
-      {/* <ScrollMarquee /> */}
+      <ScrollMarquee />
       <Details />
       <MyServices />
       <div id="about">
@@ -27,11 +27,11 @@ const Home = () => {
         {/* <Skills /> */}
       </div>
       <div id="projects">
-        {/* <MyProject /> */}
+        <MyProject />
       </div>
-      {/* <ScrollMarquee /> */}
-      {/* <Answer /> */}
-      {/* <MyExperience /> */}
+      <ScrollMarquee />
+      <Answer />
+      <MyExperience />
       <div id="contact">
         <Contact />
       </div>

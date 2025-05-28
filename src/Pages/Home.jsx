@@ -27,10 +27,10 @@ const Home = () => {
         <Skills />
       </div>
       <div id="projects">
-        <MyProject />
+        {/* <MyProject /> */}
       </div>
       {/* <ScrollMarquee /> */}
-      <Answer />
+      {/* <Answer /> */}
       {/* <MyExperience /> */}
       <div id="contact">
         <Contact />

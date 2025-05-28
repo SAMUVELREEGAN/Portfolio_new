@@ -9,7 +9,7 @@ export const about = [
         contant:"I design and develop clean, mobile-first user interfaces using Tailwind CSS and React-Bootstrap, ensuring that your website looks stunning and works flawlessly across all screen sizes and devices.",
         lists:[
             {
-                count:600,
+                count:601,
                 type1:"Project completed"
             },{
                 count:50,

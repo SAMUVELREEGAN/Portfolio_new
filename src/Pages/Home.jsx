@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <div id="home">
-        {/* <LandingPage /> */}
+        <LandingPage />
       </div>
       <ScrollMarquee />
       <Details />

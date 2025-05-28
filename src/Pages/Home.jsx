@@ -31,7 +31,7 @@ const Home = () => {
       </div>
       {/* <ScrollMarquee /> */}
       <Answer />
-      <MyExperience />
+      {/* <MyExperience /> */}
       <div id="contact">
         <Contact />
       </div>

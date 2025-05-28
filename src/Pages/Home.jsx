@@ -13,7 +13,9 @@ import Contact from "../Components/Contact";
 const Home = () => {
   return (
     <div>
-     
+      <div id="home">
+        <LandingPage />
+      </div>
       <ScrollMarquee />
       <Details />
       <MyServices />
@@ -32,9 +34,6 @@ const Home = () => {
       <MyExperience />
       <div id="contact">
         <Contact />
-      </div>
-       <div id="home">
-        <LandingPage />
       </div>
     </div>
   );

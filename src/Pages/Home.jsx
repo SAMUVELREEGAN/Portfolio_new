@@ -16,7 +16,7 @@ const Home = () => {
       <div id="home">
         <LandingPage />
       </div>
-      <ScrollMarquee />
+      {/* <ScrollMarquee /> */}
       <Details />
       <MyServices />
       <div id="about">
@@ -29,7 +29,7 @@ const Home = () => {
       <div id="projects">
         <MyProject />
       </div>
-      <ScrollMarquee />
+      {/* <ScrollMarquee /> */}
       <Answer />
       <MyExperience />
       <div id="contact">

@@ -58,7 +58,7 @@ const Contact = () => {
             <div className="form-group">
               <a
                 href="/resume"
-                target="_blank"
+                // target="_blank"
                 rel="noopener noreferrer"
                 className="resume-btn view-btn"
                 title="View Resume"

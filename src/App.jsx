@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import MyLayout from './Layouts/MyLayout'
 import FullModelPage from './Components/FullModelPage'
 import Resume from './Components/Resume'
+// import WhatsAppIcon from './Components/WhatsAppIcon'
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
     </Route>
     </Routes>
     </BrowserRouter>
-      
+            {/* <WhatsAppIcon /> */}
     </>
   )
 }

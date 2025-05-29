@@ -1,9 +1,10 @@
+// src/Components/NavSec.jsx
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { FormControlLabel, FormGroup, Modal, Box } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+import MenuFloatIcon from './MenuFloatIcon';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -110,31 +111,19 @@ const NavSec = () => {
               GitHub
             </a>
           </Button>
-          <Button
-            variant="contained"
-            sx={{
-              textTransform: 'none',
-              backgroundColor: 'var(--btn-bg-color)',
-              color: 'var(--btn-text-color)',
-              '&:hover': {
-                backgroundColor: 'var(--btn-bg-color)',
-                opacity: 0.9,
-              },
-            }}
-          >
-             <MenuOpenIcon style={{ cursor: 'pointer' }} onClick={() => setOpen(true)} />
-          </Button>
 
           <FormGroup>
             <FormControlLabel
               control={<MaterialUISwitch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />}
             />
           </FormGroup>
-
-          
         </div>
       </div>
 
+      {/* Floating Menu Icon */}
+      <MenuFloatIcon onClick={() => setOpen(true)} />
+
+      {/* Modal */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box
           sx={{

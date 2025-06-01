@@ -45,3 +45,155 @@
     }
   }
 }
+
+
+/* Modal overlay and content */
+.manual-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.manual-modal-content {
+  background: var(--btn-bg-color, #fff);
+  padding: 30px 20px 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  position: relative;
+  color: var(--bg-color);
+  text-align: center;
+}
+
+.manual-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-color, #333);
+  cursor: pointer;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* Gift box container with perspective */
+.gift-box-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  perspective: 600px;
+  cursor: default;
+}
+
+/* The base box (bottom) */
+.gift-box-base {
+  position: absolute;
+  bottom: 0;
+  width: 160px;
+  height: 120px;
+  background: linear-gradient(135deg, #d10000, #ff3e3e);
+  border-radius: 15px 15px 20px 20px;
+  box-shadow:
+    inset 0 0 15px #ff9b9b,
+    0 10px 20px rgba(209,0,0,0.6);
+  z-index: 1;
+  
+}
+
+/* The lid */
+.gift-box-lid {
+  position: absolute;
+  top: 0;
+  width: 160px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6161, #ff1f1f);
+  border-radius: 15px 15px 0 0;
+  box-shadow:
+    inset 0 0 10px #ffbaba,
+    0 5px 15px rgba(255,50,50,0.8);
+  transform-origin: bottom center;
+  z-index: 2;
+  
+  animation-fill-mode: forwards;
+}
+
+/* The ribbon on lid */
+.gift-ribbon {
+  position: absolute;
+  top: 20px;
+  
+  left: 50%;
+  width: 100px;
+  height: 15px;
+  background: linear-gradient(90deg, #fff 30%, #ff3e3e 70%);
+  border-radius: 8px;
+  box-shadow: 0 0 15px #000000;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation-fill-mode: forwards;
+}
+
+/* Opening animation: lid rotates upward */
+.gift-box-wrapper.opening .gift-box-lid {
+  animation: lidOpen 1.5s ease forwards;
+}
+
+.gift-box-wrapper.opening .gift-ribbon {
+  animation: ribbonLift 1.5s ease forwards;
+}
+
+/* Once opened: keep lid rotated open and ribbon lifted */
+.gift-box-wrapper.opened .gift-box-lid {
+  transform: rotateX(-110deg);
+  box-shadow: 0 5px 15px rgba(255,50,50,0.9);
+}
+
+.gift-box-wrapper.opened .gift-ribbon {
+  transform: translateX(-50%) translateY(-15px);
+  box-shadow: 0 0 25px #000000;
+}
+
+/* Keyframes for lid opening */
+@keyframes lidOpen {
+  0% {
+    transform: rotateX(0deg);
+    box-shadow:
+      inset 0 0 10px #ffbaba,
+      0 5px 15px rgba(255,50,50,0.8);
+  }
+  80% {
+    transform: rotateX(-120deg);
+    box-shadow:
+      inset 0 0 25px #ff8a8a,
+      0 8px 25px rgba(255,50,50,1);
+  }
+  100% {
+    transform: rotateX(-110deg);
+    box-shadow:
+      inset 0 0 15px #ffbaba,
+      0 5px 15px rgba(255,50,50,0.9);
+  }
+}
+
+@keyframes ribbonLift {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    box-shadow: 0 0 15px #080808;
+  }
+  80% {
+    transform: translateX(-50%) translateY(-20px);
+    box-shadow: 0 0 35px #000000;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-15px);
+    box-shadow: 0 0 25px #000000;
+  }
+}

@@ -46,7 +46,7 @@
 
 .contact-info .icon {
   margin-right: 10px;
-  color: #007bff;
+  color: var(--btn-bg-color);
   font-size: 1.3rem;
 }
 
@@ -71,9 +71,9 @@
   font-size: 1rem;
   font-weight: 600;
   border-radius: 8px;
-  border: 2px solid #007bff;
+  border: 2px solid var(--btn-bg-color);
   background-color: transparent;
-  color: #007bff;
+  color: var(--btn-bg-color);
   cursor: pointer;
   transition: all 0.3s ease;
   user-select: none;
@@ -81,12 +81,12 @@
 }
 
 .button-group button:hover {
-  background-color: #007bff;
+  background-color: var(--btn-bg-color);
   color: white;
 }
 
 .button-group button.active {
-  background-color: #007bff;
+  background-color: var(--btn-bg-color);
   color: white;
 }
 
@@ -138,8 +138,6 @@
 .submit-btn {
   grid-column: 1 / -1;
   margin-top: 1.8rem;
-  background-color: #007bff;
-  color: white;
   font-weight: 700;
   padding: 0.85rem 1.3rem;
   border: none;
@@ -148,6 +146,9 @@
   font-size: 1.1rem;
   transition: background-color 0.3s ease;
   user-select: none;
+  background-color: var(--btn-bg-color) !important ;
+  color: var(--btn-text-color) !important;
+  border-color: var(--bg-color) !important;
 }
 
 .submit-btn:hover {
@@ -282,4 +283,55 @@
   .contact-link {
     font-size: 1.1rem;
   }
+}
+
+.submit-btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+.work-type-options {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.radio-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.radio-card input[type="radio"] {
+  display: none;
+}
+
+.radio-card span {
+  font-size: 14px;
+  color: #333;
+}
+
+.radio-card:hover {
+  border-color: #0d6efd;
+  background-color: #e9f1ff;
+}
+
+.radio-card input[type="radio"]:checked + span {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.radio-card input[type="radio"]:checked + span::before {
+  content: "✔ ";
+  color: #0d6efd;
+  font-weight: bold;
 }

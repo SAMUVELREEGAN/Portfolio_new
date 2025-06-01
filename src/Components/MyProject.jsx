@@ -1,9 +1,9 @@
 import "./MyProject.css";
-import { Project } from "../Data/Project";
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Modal from "react-modal";
+import { MyContext } from "../Context/MyContext";
 
 // Required for accessibility
 Modal.setAppElement("#root");
@@ -22,6 +22,7 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const MyProject = () => {
+  const {Projectdata , baseURL} = useContext(MyContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
@@ -66,11 +67,16 @@ const MyProject = () => {
       </style>
       <h2 className="project-title" style={{color:'var(--text-color)'}}>My Projects</h2>
       <Slider {...settings}>
-        {Project.map((item) => (
+        {Projectdata.map((item) => (
           <div className="project-slide" key={item.id}>
             <div className="project-card">
               <div className="image-wrapper">
-                <img src={item.pic} alt={item.title} className="project-img" />
+               <img
+                  src={typeof item.pic === 'string' && item.pic.startsWith('/media') ? `${baseURL}${item.pic}` : item.pic}
+                  alt={item.title}
+                  className="project-img"
+                />
+
               </div>
               <h3>{item.title}</h3>
               <div
@@ -103,7 +109,7 @@ const MyProject = () => {
               </div>
 
               <p className="clamp-text">{item.description}</p>
-              <button className="learn-button" onClick={() => openModal(item)}>
+              <button className="all_btn1" onClick={() => openModal(item)}>
                 Learn More
               </button>
             </div>
@@ -158,6 +164,18 @@ const MyProject = () => {
             </h2>
             <p>
               <strong>Language:</strong> {modalData.language}
+            </p>
+            <p>
+              <strong>Link </strong>
+             <a 
+  href={modalData.link_name} 
+  className="d-inline-flex flex-wrap" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  {modalData.link_name}
+</a>
+
             </p>
             <p style={{ marginTop: "10px", color: "#555" }}>
               {modalData.description}

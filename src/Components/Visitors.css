@@ -1,0 +1,10 @@
+.visitors-table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+}

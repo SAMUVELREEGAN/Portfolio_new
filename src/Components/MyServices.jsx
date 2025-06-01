@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { Services } from "../Data/Services";
+import React, { useContext, useState } from "react";
 import { Modal, Button, Container, Row, Col, Card } from "react-bootstrap";
-import { Translate } from "@mui/icons-material";
+import { MyContext } from "../Context/MyContext";
+import "./MyServices.css";  // import the CSS file
 
 const MyServices = () => {
+  const { Servicesdata } = useContext(MyContext);
+
   const [showModal, setShowModal] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
@@ -18,50 +20,31 @@ const MyServices = () => {
   };
 
   return (
-    <Container className="my-4" >
-      <h1 className=" mb-4" style={{color:'var(--text-color)'}}> <span style={{color:"var(--btn-bg-color)" }}>Services </span>I Provide</h1>
+    <Container className="my-4">
+      <h1 className="my-services-title">
+        <span>Services </span>I Provide
+      </h1>
       <Row xs={1} sm={2} md={3} className="g-4">
-        {Services.map((service, index) => (
+        {Servicesdata.map((service, index) => (
           <Col key={index}>
-            <Card className="h-100 text-center" style={{backgroundColor:"var(--third-color)"}}>
+            <Card className="service-card">
               <Card.Img
                 variant="top"
                 src={service.pic}
                 alt={service.title}
-                style={{
-                  width: "80px",
-                  height: "80px",
-                  objectFit: "cover",
-                  borderRadius: "50%",
-                  margin: "20px  10px",
-                }}
+                className="service-card-img"
               />
-              <Card.Body className="d-flex flex-column" style={{color:'var(--text-color)'}}>
-                <Card.Title
-                  style={{
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    textAlign: "left",
-                  }}
-                >
+              <Card.Body className="service-card-body">
+                <Card.Title className="service-card-title">
                   {service.title}
                 </Card.Title>
-                <Card.Text
-                  style={{
-                    overflow: "hidden",
-                    display: "-webkit-box",
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: "vertical",
-                    textAlign: "left",
-                  }}
-                >
+                <Card.Text className="service-card-text">
                   {service.contant}
                 </Card.Text>
                 <Button
                   variant="primary"
                   onClick={() => handleLearnMore(service)}
-                  className="mt-auto align-self-start"
+                  className="all_btn"
                 >
                   Learn More
                 </Button>
@@ -71,7 +54,6 @@ const MyServices = () => {
         ))}
       </Row>
 
-      {/* Modal for full text */}
       <Modal show={showModal} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>{selectedService?.title}</Modal.Title>

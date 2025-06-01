@@ -56,25 +56,26 @@
 }
 
 .step-content {
-  background: #f9f9f9;
+  background: var(--third-color);
   border-left: 4px solid #007bff;
   padding: 15px 20px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   flex: 1;
+
 }
 
 .step-content h3 {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
-  color: #222;
+  color: var(--text-color) !important;
 }
 
 .step-content p {
   margin: 5px 0;
   font-size: 14px;
-  color: #555;
+  color: var(--text-color) !important;
 }
 
 /* Responsive for Mobile */

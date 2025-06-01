@@ -1,22 +1,45 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Detail } from '../Data/Detail';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState, useRef, useContext } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useInView } from 'react-intersection-observer';
 import './Details.css';
+import { MyContext } from '../Context/MyContext';
 
 const Details = () => {
-  const [info, setInfo] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.4,
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.4 });
+  const imageWrapperRef = useRef(null);
+  const { info, baseURL } = useContext(MyContext);
+  const [showFullDetail, setShowFullDetail] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isUnboxed, setIsUnboxed] = useState(false);
+  const [animationPlayed, setAnimationPlayed] = useState(false);
+  const [named , setNamed] = useState("Hello")
+
+  // List of possible gift messages
+  const giftMessages = [
+    "Keep pushing your limits! 💪",
+    "Today is your day! 🌞",
+    "Believe in yourself! ✨",
+    "Something exciting is coming! 🎁",
+    "Great things take time. Stay patient! ⏳",
+    "You're on the right path! 🛤️",
+    "Your journey is just beginning! 🚀",
+    "Stay curious, stay strong! 🧠💥",
+    "One step at a time! 👣",
+    "Every effort counts! 🎯",
+    "You’re closer than you think! 🏁",
+    "Keep going. You’ve got this! 🙌",
+    "Let your passion lead you! ❤️‍🔥",
+    "The best is yet to come! ❤️"
+  ];
+
+  // Pick one random message only once on component mount
+  const [giftMessage] = useState(() => {
+    const idx = Math.floor(Math.random() * giftMessages.length);
+    return giftMessages[idx];
   });
 
-  const imageWrapperRef = useRef(null);
-
   useEffect(() => {
-    setInfo(Detail[0]);
-
     const theme = document.documentElement.getAttribute('data-theme');
     setIsDarkMode(theme === 'dark');
 
@@ -37,7 +60,24 @@ const Details = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleMouseMove = (e) => {
+  const imageURL =
+    typeof info.mypic1 === "string" && info.mypic1.startsWith("/media")
+      ? `${baseURL}${isDarkMode ? info.mypic1 : info.mypic2}`
+      : isDarkMode
+      ? info.mypic1
+      : info.mypic2;
+
+  // Open modal: reset animation states
+  const toggleModal = () => {
+    setShowModal(true);
+    setIsUnboxed(false);
+    setAnimationPlayed(false);
+  };
+
+  const closeModal = () => setShowModal(false);
+
+  // Image tilt handlers
+  function handleMouseMove(e) {
     const wrapper = imageWrapperRef.current;
     if (!wrapper) return;
     const rect = wrapper.getBoundingClientRect();
@@ -48,77 +88,72 @@ const Details = () => {
     const rotateX = ((y - centerY) / centerY) * 50;
     const rotateY = ((x - centerX) / centerX) * 50;
     wrapper.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-  };
+  }
 
-  const handleMouseLeave = () => {
+  function handleMouseLeave() {
     if (imageWrapperRef.current) {
       imageWrapperRef.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
     }
-  };
+  }
 
-  const handleTouchMove = (e) => {
-    if (!imageWrapperRef.current) return;
-
-    if (e.touches.length > 1) return; // pinch zoom
-
+  function handleTouchMove(e) {
+    if (!imageWrapperRef.current || e.touches.length > 1) return;
     const touch = e.touches[0];
     const wrapper = imageWrapperRef.current;
     const rect = wrapper.getBoundingClientRect();
-
-    const deltaX = Math.abs(touch.clientX - rect.left);
-    const deltaY = Math.abs(touch.clientY - rect.top);
-
-    // allow vertical scroll
-    if (deltaY > deltaX) return;
-
-    e.preventDefault(); // only block horizontal gestures
-
     const x = touch.clientX - rect.left;
     const y = touch.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     const rotateX = ((y - centerY) / centerY) * 15;
     const rotateY = ((x - centerX) / centerX) * 15;
-
     wrapper.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-  };
+  }
 
-  const handleTouchEnd = () => {
+  function handleTouchEnd() {
     if (imageWrapperRef.current) {
       imageWrapperRef.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
     }
+  }
+
+  // Animation end handler to show message once
+  const handleAnimationEnd = () => {
+    if (!animationPlayed) {
+      setIsUnboxed(true);
+      setAnimationPlayed(true);
+    }
   };
 
-  if (!info) return null;
 
-  const imageURL = isDarkMode ? info.mypic1 : info.mypic2;
-
+  useEffect(()=>
+  setNamed(localStorage.getItem("userName")),[])
   return (
     <Container ref={ref} className="my-5 py-5">
       <Row className="align-items-center">
         <Col sm={12} lg={6} md={6} className="text-center text-md-start mb-4 mb-md-0">
           <h3 style={{ color: 'var(--text-color)' }}>Hello There !</h3>
           <h1>
-            <span style={{ color: 'var(--text-color)' }}>{info.mynamebefore}</span>
+            <span style={{ color: 'var(--text-color)' }}>{info.mynamebefore} </span>
             <strong className={`letter-animation ${inView ? 'animate' : ''}`}>
-              {info.mynamebeAfter?.split('').map((char, index) => (
-                <span key={index} style={{ '--i': index, color: 'var(--btn-bg-color)' }}>
-                  {char}
+              {info.mynamebeAfter?.split('-').map((char, index) => (
+                <span key={index} style={{ '--i': index, color: 'var(--btn-bg-color)', marginRight: '5px' }}>
+                 {char}
                 </span>
               ))}
             </strong>
           </h1>
           <h2 className="fw-semibold" style={{ color: 'var(--text-color)' }}>{info.role}</h2>
-          <h5 style={{ color: 'var(--text-color)' }}>{info.detailcontant}</h5>
-          <button style={{
-            width: "100%",
-            padding: "5px 0px",
-            backgroundColor: "var(--btn-bg-color)",
-            color: "var(--text-color)",
-            margin: "12px 0px"
-          }}>
-            SEND MAIL
-          </button>
+
+          <h5 style={{ color: 'var(--text-color)' }}>
+            {showFullDetail ? info.detailcontant : `${info.detailcontant?.split(' ').slice(0, 20).join(' ')}...`}
+          </h5>
+
+          <div className="d-flex flex-column flex-md-row gap-2 mt-3">
+            <Button onClick={toggleModal} className='all_btn'>🎁 Click Me, I'm Someone!</Button>
+            <Button   className='all_btn' onClick={() => setShowFullDetail(!showFullDetail)}>
+              {showFullDetail ? 'Show Less' : 'More Info'}
+            </Button>
+          </div>
         </Col>
 
         <Col sm={12} lg={6} md={6} className="d-flex justify-content-center align-items-center">
@@ -144,6 +179,40 @@ const Details = () => {
           />
         </Col>
       </Row>
+
+      {/* Manual Modal */}
+      {showModal && (
+        <div className="manual-modal-overlay" onClick={closeModal}>
+          <div
+            className="manual-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+          >
+            <button className="manual-modal-close" onClick={closeModal} aria-label="Close modal">&times;</button>
+            <h2 id="modal-title" style={{ marginBottom: '20px' }}>🎉 Hey {named}</h2>
+            <p>This for you..</p>
+            <div className="text-center">
+              <div
+                className={`gift-box-wrapper ${isUnboxed ? 'opened' : 'opening'}`}
+                onAnimationEnd={handleAnimationEnd}
+                role="img"
+                aria-label="Gift box opening animation"
+              >
+                <div className="gift-box-base" />
+                <div className="gift-box-lid" />
+                <div className="gift-ribbon" />
+              </div>
+              {isUnboxed && (
+                <p style={{ fontSize: '1.2rem',  color: 'var(--bg-color)', marginTop: '20px' }}>
+                  {giftMessage}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </Container>
   );
 };

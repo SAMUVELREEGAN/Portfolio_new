@@ -1,18 +1,20 @@
 import { Container } from "react-bootstrap";
-import { Myskill } from "../Data/Skills";
+// import { Myskill } from "../Data/Skills";
 import "./Skills.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { MyContext } from "../Context/MyContext";
 
 const Skills = () => {
+  const {Myskilldata} = useContext(MyContext)
   const { ref, inView } = useInView({ triggerOnce: true });
   const [animatedPercentages, setAnimatedPercentages] = useState(
-    Myskill.map(() => 0)
+    Myskilldata.map(() => 0)
   );
 
   useEffect(() => {
     if (inView) {
-      Myskill.forEach((skill, i) => {
+      Myskilldata.forEach((skill, i) => {
         let count = 0;
         const interval = setInterval(() => {
           count += 1;
@@ -33,7 +35,7 @@ const Skills = () => {
     <h3 style={{color:'var(--text-color)'}}>A Showcase of My Technical Strengths</h3>
 
       <div className="skills-container" ref={ref}>
-        {Myskill.map((skill, i) => (
+        {Myskilldata.map((skill, i) => (
           <div className="skill-card" key={skill.id}>
             <div className="skill-circle">
               <img src={skill.pic} alt={skill.name} className="skill-icon" />

@@ -1,14 +1,17 @@
 import './MyExperience.css';
-import { Experience } from '../Data/Experience';
-import { useState } from 'react';
+// import { Experience } from '../Data/Experience';
+import { useContext, useState } from 'react';
 import { FaBuilding, FaMapMarkerAlt, FaBriefcase, FaClock } from 'react-icons/fa';
 import pic from '../assets/ex.png';
 import bgImage from '../assets/pro1.jpg';
 import { Container, Row, Col } from 'react-bootstrap';
+import { MyContext } from '../Context/MyContext';
 
 const MyExperience = () => {
+  const {experienceData} = useContext(MyContext);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const currentItem = Experience[currentIndex];
+  const currentItem = experienceData[currentIndex];
+
 
   const handleSelect = (index) => {
     setCurrentIndex(index);
@@ -27,7 +30,7 @@ const MyExperience = () => {
             <Col md={7} className="order-2 order-md-1">
              <h2 className="experience-title" style={{color:'white'}}>My Experience</h2>
               <div className="circle-selector">
-                {Experience.map((_, idx) => (
+                {experienceData.map((_, idx) => (
                   <div
                     key={idx}
                     className={`circle ${currentIndex === idx ? 'active' : ''}`}
@@ -40,14 +43,14 @@ const MyExperience = () => {
 
               <div className="experience-card fade-in">
                                <div className="experience-details">
-                  <h3 className="company-name"> <FaBuilding className="experience-icon" />{currentItem.CompanyName}</h3>
+                  <h3 className="company-name"> <FaBuilding className="experience-icon" />{currentItem.company_name}</h3>
                   <div className="info-row">
                     <FaBriefcase className="info-icon" />
-                    <span className="role">{currentItem.MyRole}</span>
+                    <span className="role">{currentItem.role}</span>
                   </div>
                   <div className="info-row">
                     <FaClock className="info-icon" />
-                    <span className="duration">{currentItem.deuration}</span>
+                    <span className="duration">{currentItem.duration}</span>
                   </div>
                   <div className="info-row">
                     <FaMapMarkerAlt className="info-icon" />

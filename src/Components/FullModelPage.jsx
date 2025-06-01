@@ -12,7 +12,7 @@ const FullModelPage = () => {
         html, body, #root, #full-model-container {
           margin: 0; padding: 0; height: 100%; width: 100%;
           overflow: hidden;
-          background-color: #111;
+          background-color: var(--bg-color);
         }
       `}</style>
       <div id="full-model-container" style={{ height: "100vh", width: "100vw" }}>

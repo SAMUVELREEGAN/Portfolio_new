@@ -1,4 +1,4 @@
-/* index.css or App.css */
+
 
 :root {
   --bg-color: #ffffff;        /* White */
@@ -14,4 +14,18 @@
   --btn-bg-color: #8e24aa;    /* Deep purple */
   --btn-text-color: #ffffff;
   --third-color: #29474c;     /* Teal/Gray-Match (goes well with purple) */
+}
+
+
+.all_btn{
+  background-color: var(--btn-bg-color) !important ;
+  color: var(--btn-text-color) !important;
+  border-color: var(--bg-color) !important;
+}
+.all_btn1{
+  background-color: var(--btn-bg-color) !important ;
+  color: var(--btn-text-color) !important;
+  border-color: var(--bg-color) !important;
+  border-radius: 5px;
+  padding: 5px 0px;
 }

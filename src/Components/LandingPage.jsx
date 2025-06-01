@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+// src/Components/LandingPage.js
+import React, { useEffect, useState, useContext } from "react";
 import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, Bounds } from "@react-three/drei";
 import { MyModel } from "./MyModel";
 import { useNavigate } from "react-router-dom";
-import { landingpara } from "../Data/LandingPara";
+import { MyContext } from "../Context/MyContext";
 import './LandingPage.css'
 
 const LandingPage = () => {
@@ -12,6 +13,8 @@ const LandingPage = () => {
   const [inputValue, setInputValue] = useState("");
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
+  const { landingData ,baseURL } = useContext(MyContext);
 
   useEffect(() => {
     const savedName = localStorage.getItem("userName");
@@ -23,14 +26,26 @@ const LandingPage = () => {
     }
   }, []);
 
-  const handleSubmit = () => {
-    const trimmedName = inputValue.trim();
-    if (trimmedName !== "") {
-      localStorage.setItem("userName", trimmedName);
-      setUserName(trimmedName);
-      setShow(false);
-    }
-  };
+const handleSubmit = () => {
+  
+  const trimmedName = inputValue.trim();
+  window.location.reload();
+  if (trimmedName !== "") {
+    localStorage.setItem("userName", trimmedName);
+    setUserName(trimmedName);
+    setShow(false);
+
+    // 🔽 Send name to backend
+    fetch(`${baseURL}/api/visitors/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: trimmedName }),
+    }).catch((err) => console.error("Visitor Save Error:", err));
+  }
+};
+
 
   const goToFullModel = () => {
     navigate("/model");
@@ -52,26 +67,15 @@ const LandingPage = () => {
         .fade-in-up-infinite {
           animation: fadeInUpInfinite 3s ease-in-out infinite;
         }
-        .fade-in-up-delay-1 {
-          animation-delay: 0s;
-        }
-        .fade-in-up-delay-2 {
-          animation-delay: 0.5s;
-        }
-        .fade-in-up-delay-3 {
-          animation-delay: 1s;
-        }
-        .fade-in-up-delay-4 {
-          animation-delay: 1.5s;
-        }
-        .fade-in-up-delay-5 {
-          animation-delay: 2s;
-        }
+        .fade-in-up-delay-1 { animation-delay: 0s; }
+        .fade-in-up-delay-2 { animation-delay: 0.5s; }
+        .fade-in-up-delay-3 { animation-delay: 1s; }
+        .fade-in-up-delay-4 { animation-delay: 1.5s; }
+        .fade-in-up-delay-5 { animation-delay: 2s; }
       `}</style>
 
       <Container className="py-5">
         <Row className="align-items-center justify-content-center">
-          {/* Text Column */}
           <Col xs={12} md={7} className="text-center mb-4 mb-md-0">
             <h1 className="fade-in-up-infinite fade-in-up-delay-1" style={{ color: 'var(--text-color)' }}>
               Welcome,
@@ -80,7 +84,7 @@ const LandingPage = () => {
               </span>
             </h1>
 
-            {landingpara.map((item, index) => (
+            {landingData.map((item, index) => (
               <p
                 key={item.id}
                 className={`fade-in-up-infinite fade-in-up-delay-${index + 2}`}
@@ -111,22 +115,19 @@ const LandingPage = () => {
             </Button>
           </Col>
 
-          {/* 3D Model Column */}
           <Col xs={12} md={5}>
-  <div style={{ width: "100%", height: "500px" }} className="model-3d">
-    <Canvas style={{ width: "100%", height: "100%" }}>
-      <OrbitControls makeDefault />
-      <Environment preset="studio" />
-      <Bounds fit clip observe margin={0.2}>
-        <MyModel />
-      </Bounds>
-    </Canvas>
-  </div>
-</Col>
-
+            <div style={{ width: "100%", height: "500px" }} className="model-3d">
+              <Canvas style={{ width: "100%", height: "100%" }}>
+                <OrbitControls makeDefault />
+                <Environment preset="studio" />
+                <Bounds fit clip observe margin={0.2}>
+                  <MyModel />
+                </Bounds>
+              </Canvas>
+            </div>
+          </Col>
         </Row>
 
-        {/* Modal for user name */}
         <Modal show={show} onHide={() => {}} backdrop="static" centered>
           <Modal.Header>
             <Modal.Title>Welcome! What's your sweet name?</Modal.Title>
@@ -144,6 +145,7 @@ const LandingPage = () => {
               variant="primary"
               onClick={handleSubmit}
               disabled={!inputValue.trim()}
+              
             >
               Submit
             </Button>

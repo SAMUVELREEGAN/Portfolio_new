@@ -1,6 +1,6 @@
 import "./Contact.css";
-import { useState } from "react";
-import { MyContact } from "../Data/MyContact";
+import { useState, useContext, useRef } from "react";
+import { MyContext } from "../Context/MyContext";
 import {
   FaPhone,
   FaEnvelope,
@@ -8,15 +8,74 @@ import {
   FaDownload,
   FaEye,
 } from "react-icons/fa";
+import axios from "axios";
 
 const Contact = () => {
+  const { MyContact } = useContext(MyContext);
   const [selected, setSelected] = useState("connect");
   const [type, setType] = useState("text");
+  const formRef = useRef();
+  const [userMessage, setUserMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [bondType, setBondType] = useState("");
+
+  // Function to get CSRF token from cookies
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let c of cookies) {
+        const cookie = c.trim();
+        if (cookie.startsWith(name + "=")) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const csrfToken = getCookie("csrftoken");
 
   const subtitleMap = {
     connect: "Let's Talk for Your Next Projects",
     hiring: "Hiring Opportunity - Let's Collaborate",
     freelance: "Freelance Projects - Let's Work Together",
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+    const data = {};
+
+    for (let [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+
+    data.type = selected;
+
+    try {
+      setLoading(true);
+      setUserMessage("");
+
+      const response = await axios.post(
+        "http://localhost:8000/api/mycontact/contact/",
+        data,
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      if (response.data.success) {
+        setUserMessage("Your message has been sent successfully.");
+        formRef.current.reset();
+      } else {
+        setUserMessage("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setUserMessage("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const renderInputs = () => {
@@ -25,132 +84,188 @@ const Contact = () => {
         return (
           <>
             <div className="form-group">
-              <input type="text" placeholder="Your Name *" required />
+              <input name="name" type="text" placeholder="Your Name *" required />
             </div>
             <div className="form-group">
-              <input type="email" placeholder="Your Email *" required />
+              <input name="email" type="email" placeholder="Your Email *" required />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Your Contact *" required />
+              <input name="contact" type="text" placeholder="Your Contact *" required />
             </div>
             <div className="form-group">
-              <input placeholder="Say Hello" rows="4"></input>
+              <input name="message" placeholder="Say Hello" rows="4" />
             </div>
-            <button className="submit-btn" type="submit">
-              Submit
+            <button className="submit-btn" type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Submit"}
             </button>
           </>
         );
 
       case "hiring":
-        return (
-          <>
-            <div className="form-group">
-              <a
-                href={MyContact[0].mypdf}
-                download="Samuvel_Reegan_Resume.pdf"
-                className="resume-btn download-btn"
-                title="Download Resume"
-              >
-                <FaDownload /> Download Resume
-              </a>
-            </div>
-            <div className="form-group">
-              <a
-                href="/resume"
-                // target="_blank"
-                rel="noopener noreferrer"
-                className="resume-btn view-btn"
-                title="View Resume"
-              >
-                <FaEye /> View Resume
-              </a>
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Your Email *" required />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Your Contact" />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Start Package (LPA) *" required />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="End Package (LPA) *" required />
-            </div>
-            <div className="form-group">
-              <input
-                type={type}
-                onFocus={() => setType("date")}
-                onBlur={(e) => {
-                  if (!e.target.value) setType("text");
-                }}
-                placeholder="Joining Date *"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <select required>
-                <option value="">Bond Type *</option>
-                <option value="bond">Bond</option>
-                <option value="unbound">Unbound</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Company Name *" required />
-            </div>
-            <div className="form-group">
-              <input type="text" placeholder="Company Location *" required />
-            </div>
+  return (
+    <>
+      <div className="form-group">
+        <a
+          href={MyContact.mypdf}
+          download="Samuvel_Reegan_Resume.pdf"
+          className="resume-btn download-btn"
+          title="Download Resume"
+        >
+          <FaDownload /> Download Resume
+        </a>
+      </div>
 
-            {/* <div className="form-group resume-btn-group">
-            
+      <div className="form-group">
+        <a
+          href="/resume"
+          rel="noopener noreferrer"
+          className="resume-btn view-btn"
+          title="View Resume"
+        >
+          <FaEye /> View Resume
+        </a>
+      </div>
 
-            </div> */}
+      <div className="form-group">
+        <input name="email" type="text" placeholder="Your Email *" required />
+      </div>
 
-            <button className="submit-btn" type="submit">
-              Submit
-            </button>
-          </>
-        );
+      <div className="form-group">
+        <input name="contact" type="text" placeholder="Your Contact" />
+      </div>
+
+      <div className="form-group">
+        <input name="start_package" type="text" placeholder="Min Package (LPA)" />
+      </div>
+
+      <div className="form-group">
+        <input name="end_package" type="text" placeholder="Max Package (LPA) *" required />
+      </div>
+
+      <div className="form-group">
+        <input
+          name="joining_date"
+          type={type}
+          onFocus={() => setType("date")}
+          onBlur={(e) => !e.target.value && setType("text")}
+          placeholder="Joining Date *"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <select
+          name="bond_type"
+          required
+          onChange={(e) => setBondType(e.target.value)}
+        >
+          <option value="">Bond Type *</option>
+          <option value="bond">Bond</option>
+          <option value="unbound">Unbound</option>
+        </select>
+      </div>
+
+      {bondType === "bond" && (
+        <>
+          <div className="form-group">
+            <input
+              name="bond_start_year"
+              type="number"
+              placeholder="Bond Start Year"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              name="bond_end_year"
+              type="number"
+              placeholder="Bond End Year"
+              required
+            />
+          </div>
+        </>
+      )}
+
+      <div className="form-group">
+        <input
+          name="company_name"
+          type="text"
+          placeholder="Company Name *"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <input
+          name="company_location"
+          type="text"
+          placeholder="Company Location *"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+  <label className="form-label" style={{color:"var(--text-color)"}}><strong>Work Type *</strong></label>
+  <div className="work-type-options">
+    <label className="radio-card">
+      <input type="radio" name="work_type" value="hybrid" required />
+      <span>Hybrid</span>
+    </label>
+    <label className="radio-card">
+      <input type="radio" name="work_type" value="work_from_home" required />
+      <span>WF Home</span>
+    </label>
+    <label className="radio-card">
+      <input type="radio" name="work_type" value="work_from_office" required />
+      <span>WF Office</span>
+    </label>
+  </div>
+</div>
+
+
+      <button className="submit-btn" type="submit" disabled={loading}>
+        {loading ? "Sending..." : "Submit"}
+      </button>
+    </>
+  );
+
 
       case "freelance":
         return (
           <>
             <div className="form-group">
-              <input type="text" placeholder="Your Name *" required />
+              <input name="name" type="text" placeholder="Your Name *" required />
             </div>
             <div className="form-group">
-              <input type="email" placeholder="Your Email *" required />
+              <input name="email" type="email" placeholder="Your Email *" required />
             </div>
             <div className="form-group">
-              <input type="number" placeholder="Your Contact*" required />
+              <input name="contact" type="number" placeholder="Your Contact*" required />
             </div>
             <div className="form-group">
               <input
+                name="end_date"
                 type={type}
                 onFocus={() => setType("date")}
-                onBlur={(e) => {
-                  if (!e.target.value) setType("text");
-                }}
+                onBlur={(e) => !e.target.value && setType("text")}
                 placeholder="Project End Date *"
                 required
               />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Project Title *" required />
+              <input name="title" type="text" placeholder="Project Title *" required />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Requirements *" required />
+              <input name="requirements" type="text" placeholder="Requirements *" required />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Budget *" required />
+              <input name="budget" type="text" placeholder="Budget *" required />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Your Message " />
+              <input name="message" type="text" placeholder="Your Message" />
             </div>
-            <button className="submit-btn" type="submit">
-              Submit
+            <button className="submit-btn" type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Submit"}
             </button>
           </>
         );
@@ -167,68 +282,63 @@ const Contact = () => {
         <h3 style={{ fontSize: "2.5rem", color: "var(--btn-bg-color)" }}>
           {subtitleMap[selected]}
         </h3>
-<p style={{flexWrap:"wrap" , color: "var(--text-color)"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptatum, delectus itaque eveniet atque explicabo excepturi in aspernatur commodi facere optio amet magni eius obcaecati sunt. Maiores veritatis tenetur officiis!</p>
+        <p style={{ flexWrap: "wrap", color: "var(--text-color)" }}>
+         Feel free to reach out anytime. I’m always available to assist you with your queries.
+        </p>
         <div className="contact-info">
-  <p>
-    <FaPhone className="icon" />{" "}
-    <a
-      href={`tel:${MyContact[0].phone}`}
-      className="contact-link"
-    >
-      {MyContact[0].phone}
-    </a>
-  </p>
-  <p>
-    <FaEnvelope className="icon" />{" "}
-    <a
-      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${MyContact[0].email}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="contact-link"
-    >
-      {MyContact[0].email}
-    </a>
-  </p>
-  <p>
-    <FaMapMarkerAlt className="icon" />{" "}
-    <a
-      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MyContact[0].address)}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="contact-link"
-    >
-      {MyContact[0].address}
-    </a>
-  </p>
-</div>
-
+          <p>
+            <FaPhone className="icon" />
+            <a href={`tel:${MyContact.phone}`} className="contact-link">
+              {MyContact.phone}
+            </a>
+          </p>
+          <p>
+            <FaEnvelope className="icon" />
+            <a
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${MyContact.email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link"
+            >
+              {MyContact.email}
+            </a>
+          </p>
+          <p>
+            <FaMapMarkerAlt className="icon" />
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MyContact.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link"
+            >
+              {MyContact.address}
+            </a>
+          </p>
+        </div>
       </div>
 
       <div className="contact-right">
         <div className="button-group">
-          <button
-            className={selected === "connect" ? "active" : ""}
-            onClick={() => setSelected("connect")}
-          >
+          <button className={selected === "connect" ? "active" : ""} onClick={() => setSelected("connect")}>
             Contact to Connect
           </button>
-          <button
-            className={selected === "hiring" ? "active" : ""}
-            onClick={() => setSelected("hiring")}
-          >
+          <button className={selected === "hiring" ? "active" : ""} onClick={() => setSelected("hiring")}>
             Hiring
           </button>
-          <button
-            className={selected === "freelance" ? "active" : ""}
-            onClick={() => setSelected("freelance")}
-          >
+          <button className={selected === "freelance" ? "active" : ""} onClick={() => setSelected("freelance")}>
             Freelancing
           </button>
         </div>
 
-        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+        <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
           {renderInputs()}
         </form>
+
+        {userMessage && (
+          <p className="form-feedback" style={{ marginTop: "1rem", color: "var(--btn-bg-color)" }}>
+            {userMessage}
+          </p>
+        )}
       </div>
     </div>
   );

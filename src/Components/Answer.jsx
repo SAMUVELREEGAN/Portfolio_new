@@ -1,8 +1,10 @@
-import { useState } from "react";
-import { Questions } from "../Data/Questions";
+import { useContext, useState } from "react";
+// import { Questions } from "../Data/Questions";
 import "./Answer.css";
+import { MyContext } from "../Context/MyContext";
 
 const Answer = () => {
+  const {Questionsdata} = useContext(MyContext)
   const [openId, setOpenId] = useState(null);
 
   const toggleAnswer = (id) => {
@@ -16,14 +18,14 @@ const Answer = () => {
     <h3>Questions? Look here.</h3>
     </div>
      <div className="faq-container">
-      {Questions.map((item) => (
+      {Questionsdata.map((item) => (
         <div key={item.id} className="faq-item">
           <button className="faq-question" onClick={() => toggleAnswer(item.id)}>
             <span>{item.qus}</span>
             <span className="faq-icon">{openId === item.id ? "−" : "+"}</span>
           </button>
           <div className={`faq-answer ${openId === item.id ? "open" : ""}`}>
-            <p>{item.ans}</p>
+            <p style={{color: 'var(--text-color)' }}>{item.ans}</p>
           </div>
         </div>
       ))}

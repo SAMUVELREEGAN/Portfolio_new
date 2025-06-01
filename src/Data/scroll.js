@@ -14,5 +14,14 @@ export const sroll = [
     },{
         id:5,
         scname:"mysql"
+    },{
+        id:6,
+        scname:"mogodb"
+    },{
+        id:7,
+        scname:"Three js"
+    },{
+        id:8,
+        scname:"python"
     },
 ]

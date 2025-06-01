@@ -4,15 +4,14 @@ export const Education1 = [
         heading:'Eduction',
         one: [ 
             {
-                passedout:"2013",
+                passedout:"2018",
                 institute : "RC School",
                 locations:"Dindigul",
-                sub:'10th'
+                // sub:'10th'
             },{
-                passedout:"2013",
+                passedout:"2020",
                 institute : "RC School",
                 locations:"Dindigul",
-                sub:'12th'
             }
 
         ]
@@ -22,15 +21,13 @@ export const Education1 = [
         heading:'Certificattion',
         one: [ 
             {
-                passedout:"2013",
-                institute : "RC School",
+                passedout:"2023",
+                institute : "Parvathy's",
                 locations:"Dindigul",
-                sub:'10th'
             },{
-                passedout:"2013",
-                institute : "RC School",
-                locations:"Dindigul",
-                sub:'12th'
+                passedout:"2024",
+                institute : "Edex Tech",
+                locations:"Madurai",
             }
 
         ]

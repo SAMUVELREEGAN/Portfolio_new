@@ -5,6 +5,8 @@ import { FormControlLabel, FormGroup, Modal, Box } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import MenuFloatIcon from './MenuFloatIcon';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -60,6 +62,8 @@ const NavSec = () => {
 
   const [open, setOpen] = useState(false);
 
+  const location = useLocation(); // <-- Added to get current path
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
@@ -85,8 +89,9 @@ const NavSec = () => {
         }}
         className="mx-lg-5"
       >
-        <div>
-          <h4 style={{ color: 'var(--text-color)' }}>DeV LuV</h4>
+        <div className='d-flex'>
+          <img src={logo} alt="" width='45' />
+          <h4 style={{ color: 'var(--text-color)', fontSize: '2rem', position: "relative", top: "3px", right: "3px" }}>am.</h4>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -114,52 +119,68 @@ const NavSec = () => {
 
           <FormGroup>
             <FormControlLabel
-              control={<MaterialUISwitch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />}
+              control={<MaterialUISwitch checked={darkMode} onChange={() => { setDarkMode(!darkMode); window.location.reload(); }} />}
             />
           </FormGroup>
         </div>
       </div>
 
-      {/* Floating Menu Icon */}
-      <MenuFloatIcon onClick={() => setOpen(true)} />
+      {/* Conditionally render Floating Menu Icon and Modal ONLY if path is NOT '/visitors' */}
+      {location.pathname !== '/visitors' && location.pathname !== '/model' &&  (
+        <>
+          <MenuFloatIcon onClick={() => setOpen(true)} />
 
-      {/* Modal */}
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <Box
-          sx={{
-            width: 250,
-            bgcolor: 'background.paper',
-            color: 'text.primary',
-            p: 4,
-            m: 'auto',
-            mt: '15%',
-            borderRadius: '10px',
-            textAlign: 'center',
-          }}
-        >
-          <h3>Navigate</h3>
-          {[
-            { label: 'Home', id: 'home' },
-            { label: 'About', id: 'about' },
-            { label: 'Projects', id: 'projects' },
-            { label: 'Skills', id: 'skills' },
-            { label: 'Contact', id: 'contact' },
-          ].map((item) => (
-            <p
-              key={item.id}
-              onClick={() => handleSmoothScroll(item.id)}
-              style={{
-                margin: '1rem 0',
-                cursor: 'pointer',
-                color: 'var(--text-color)',
-                fontWeight: 'bold',
+          <Modal open={open} onClose={() => setOpen(false)}>
+            <Box
+              sx={{
+                width: 250,
+                bgcolor: 'background.paper',
+                color: 'text.primary',
+                p: 4,
+                m: 'auto',
+                mt: '15%',
+                borderRadius: '10px',
+                textAlign: 'center',
               }}
             >
-              {item.label}
-            </p>
-          ))}
-        </Box>
-      </Modal>
+              <h3>Navigate</h3>
+              {[
+                { label: 'Home', id: 'home' },
+                { label: 'About', id: 'about' },
+                { label: 'Projects', id: 'projects' },
+                { label: 'Skills', id: 'skills' },
+                { label: 'Contact', id: 'contact' },
+              ].map((item) => (
+                <p
+                  key={item.id}
+                  onClick={() => handleSmoothScroll(item.id)}
+                  style={{
+                    margin: '1rem 0',
+                    cursor: 'pointer',
+                    color: 'black',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {item.label}
+                </p>
+              ))}
+
+              <Link to="/visitors" style={{ textDecoration: 'none' }} onClick={() => setOpen(false)}>
+                <p
+                  style={{
+                    margin: '1rem 0',
+                    cursor: 'pointer',
+                    color: '#2e7d32',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Visitors
+                </p>
+              </Link>
+            </Box>
+          </Modal>
+        </>
+      )}
     </>
   );
 };

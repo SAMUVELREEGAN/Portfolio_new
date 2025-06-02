@@ -26,25 +26,34 @@ const LandingPage = () => {
     }
   }, []);
 
-const handleSubmit = () => {
   
+const handleSubmit = () => {
   const trimmedName = inputValue.trim();
-  window.location.reload();
+
   if (trimmedName !== "") {
     localStorage.setItem("userName", trimmedName);
     setUserName(trimmedName);
     setShow(false);
 
-    // 🔽 Send name to backend
+    // ✅ Send name to backend and reload only after success
     fetch(`${baseURL}/api/visitors/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: trimmedName }),
-    }).catch((err) => console.error("Visitor Save Error:", err));
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to save visitor");
+        return res.json();
+      })
+      .then(() => {
+        window.location.reload(); // ✅ Reload after successful POST
+      })
+      .catch((err) => console.error("Visitor Save Error:", err));
   }
 };
+
 
 
   const goToFullModel = () => {

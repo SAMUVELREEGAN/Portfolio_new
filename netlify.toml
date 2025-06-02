@@ -2,10 +2,10 @@
   from = "/api/*"
   to = "http://3.83.228.251/api/:splat"
   status = 200
-  force = true
+  force = false
 
 [[redirects]]
   from = "/media/*"
   to = "http://3.83.228.251/media/:splat"
   status = 200
-  force = true
+  force = false

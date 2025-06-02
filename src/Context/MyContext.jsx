@@ -34,7 +34,7 @@ export const MyProvider = ({ children }) => {
   useEffect(() => {
     // Fetch landing paragraph
     axios
-      .get("/api/landingpara/")
+      .get("/ai/landingpara/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setLandingData(res.data);
@@ -46,7 +46,7 @@ export const MyProvider = ({ children }) => {
 
     // Fetch about data
     axios
-      .get("/api/about/")
+      .get("/ai/about/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setAboutData(res.data);
@@ -89,7 +89,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("/api/detail/")
+      .get("/ai/detail/")
       .then((res) => {
         if (res.data) setInfo(res.data);
       })
@@ -99,7 +99,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("/api/projects/")
+      .get("/ai/projects/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setProject(res.data);
@@ -110,7 +110,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("/api/services/")
+      .get("/ai/services/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setservices(res.data);
@@ -121,7 +121,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("/api/myskills/")
+      .get("/ai/myskills/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setMyskill(res.data);

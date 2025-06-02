@@ -165,7 +165,8 @@ const NavSec = () => {
                 </p>
               ))}
 
-              <Link to="/visitors" style={{ textDecoration: 'none' }} onClick={() => setOpen(false)}>
+              <Link to="/visitors" style={{ textDecoration: 'none' ,pointerEvents: 'none', // disables click
+    opacity: 0.5,}} onClick={() => setOpen(false)}>
                 <p
                   style={{
                     margin: '1rem 0',

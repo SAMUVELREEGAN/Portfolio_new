@@ -116,15 +116,21 @@ const Contact = () => {
       </div>
 
       <div className="form-group">
-        <a
-          href="/resume"
-          rel="noopener noreferrer"
-          className="resume-btn view-btn"
-          title="View Resume"
-        >
-          <FaEye /> View Resume
-        </a>
-      </div>
+  <a
+    href="/resume"
+    rel="noopener noreferrer"
+    className="resume-btn view-btn"
+    title="View Resume"
+    style={{
+      pointerEvents: 'none',   // disables the link
+      opacity: 0.5,            // optional: dims the link
+      cursor: 'not-allowed'    // optional: shows disabled cursor
+    }}
+  >
+    <FaEye /> View Resume
+  </a>
+</div>
+
 
       <div className="form-group">
         <input name="email" type="text" placeholder="Your Email *" required />

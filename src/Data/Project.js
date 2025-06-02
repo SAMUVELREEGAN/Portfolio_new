@@ -1,4 +1,9 @@
 import pic from "../assets/pro.jpg";
+import pic1 from "../assets/pro (2).png";
+import pic2 from "../assets/pro (1).jpg";
+import pic3 from "../assets/pro (1).png";
+import pic4 from "../assets/pro (2).jpg";
+import pic5 from "../assets/ani1.jpg";
 
 export const Project = [
   {
@@ -12,7 +17,7 @@ export const Project = [
   },
   {
     id: 2,
-    pic: pic,
+    pic: pic2,
     title: "Food Blog",
     language: "HTML, CSS, Bootstrap",
     description:
@@ -21,7 +26,7 @@ export const Project = [
   },
   {
     id: 3,
-    pic: pic,
+    pic: pic1,
     title: "Student Course Management",
     language: "React, Django",
     description:
@@ -30,7 +35,7 @@ export const Project = [
   },
   {
     id: 4,
-    pic: pic,
+    pic: pic4,
     title: "E_commerce",
     language: "React, Node, MongoDB",
     description:
@@ -39,7 +44,7 @@ export const Project = [
   },
   {
     id: 5,
-    pic: pic,
+    pic: pic3,
     title: "Library Management",
     language: "Django",
     description:
@@ -48,7 +53,7 @@ export const Project = [
   },
   {
     id: 6,
-    pic: pic,
+    pic: pic5,
     title: "Furniture Portfolio",
     language: "Django, React",
     description:

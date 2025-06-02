@@ -29,12 +29,12 @@ export const MyProvider = ({ children }) => {
   const [Srolldata, setsroll] = useState(defaultsrolldata);
   const [ProjectURL, setProjectURL] = useState(defaultProjectURLdata);
 
-  const baseURL = "http://localhost:8000";
+  const baseURL = "http://3.83.228.251";
 
   useEffect(() => {
     // Fetch landing paragraph
     axios
-      .get("http://localhost:8000/api/landingpara/")
+      .get("http://3.83.228.251/api/landingpara/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setLandingData(res.data);
@@ -46,7 +46,7 @@ export const MyProvider = ({ children }) => {
 
     // Fetch about data
     axios
-      .get("http://localhost:8000/api/about/")
+      .get("http://3.83.228.251/api/about/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setAboutData(res.data);
@@ -56,7 +56,7 @@ export const MyProvider = ({ children }) => {
         console.warn("About API failed, using default content:", err);
       });
     axios
-      .get("http://localhost:8000/api/experience/")
+      .get("http://3.83.228.251/api/experience/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setexperienceData(res.data);
@@ -67,7 +67,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/education/")
+      .get("http://3.83.228.251/api/education/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setEducation(res.data);
@@ -78,7 +78,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/mycontact/")
+      .get("http://3.83.228.251/api/mycontact/")
       .then((res) => {
         if (res.data) {
           setMyContact(res.data);
@@ -89,7 +89,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/detail/")
+      .get("http://3.83.228.251/api/detail/")
       .then((res) => {
         if (res.data) setInfo(res.data);
       })
@@ -99,7 +99,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/projects/")
+      .get("http://3.83.228.251/api/projects/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setProject(res.data);
@@ -110,7 +110,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/services/")
+      .get("http://3.83.228.251/api/services/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setservices(res.data);
@@ -121,7 +121,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/myskills/")
+      .get("http://3.83.228.251/api/myskills/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setMyskill(res.data);
@@ -132,7 +132,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/questions/")
+      .get("http://3.83.228.251/api/questions/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setQuestions(res.data);
@@ -142,7 +142,7 @@ export const MyProvider = ({ children }) => {
         console.warn("API failed, using default content:", err);
       });
     axios
-      .get("http://localhost:8000/api/scroll/")
+      .get("http://3.83.228.251/api/scroll/")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setsroll(res.data);
@@ -153,7 +153,7 @@ export const MyProvider = ({ children }) => {
       });
 
     axios
-      .get("http://localhost:8000/api/projectsurls")
+      .get("http://3.83.228.251/api/projectsurls")
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setProjectURL(res.data);

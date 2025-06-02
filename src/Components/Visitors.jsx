@@ -8,7 +8,7 @@ const Visitors = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/visitors/")
+    fetch("http://3.83.228.251/api/visitors/")
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

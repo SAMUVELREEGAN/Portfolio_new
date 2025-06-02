@@ -59,7 +59,7 @@ const Contact = () => {
       setUserMessage("");
 
       const response = await axios.post(
-        "http://localhost:8000/api/mycontact/contact/",
+        "http://3.83.228.251/api/mycontact/contact/",
         data,
         { headers: { "Content-Type": "application/json" } }
       );

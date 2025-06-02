@@ -24,7 +24,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/landingpara/theme-settings')
+    axios.get('http://3.83.228.251/api/landingpara/theme-settings')
       .then(res => {
         const themes = res.data;  // backend data
         setThemesColors(themes);

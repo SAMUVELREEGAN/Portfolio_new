@@ -32,7 +32,7 @@ const Footer = () => {
     
 
     // Fetch social links from backend
-    fetch('http://localhost:8000/api/social-links/')
+    fetch('http://3.83.228.251/api/social-links/')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
@@ -58,7 +58,7 @@ const Footer = () => {
   setLoading(true);
 
   try {
-    const response = await fetch('http://localhost:8000/api/send-feedback/', {
+    const response = await fetch('http://3.83.228.251/api/send-feedback/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, feedback }),

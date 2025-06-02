@@ -1,6 +1,6 @@
 // src/Data/Detail.js
 import img1 from '../assets/pic.png';
-import img2 from '../assets/pic2.png';
+import img2 from '../assets/pic5.png';
 
 export const defaultDetail = [
   {

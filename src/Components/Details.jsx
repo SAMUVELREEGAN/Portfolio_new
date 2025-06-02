@@ -62,7 +62,7 @@ const Details = () => {
 
   const imageURL =
     typeof info.mypic1 === "string" && info.mypic1.startsWith("/media")
-      ? `${baseURL}${isDarkMode ? info.mypic1 : info.mypic2}`
+      ? `/media/${isDarkMode ? info.mypic1 : info.mypic2}`
       : isDarkMode
       ? info.mypic1
       : info.mypic2;

@@ -36,7 +36,7 @@ const handleSubmit = () => {
     setShow(false);
 
     // 🔽 Send name to backend
-    fetch(`${baseURL}/api/visitors/`, {
+    fetch(`/api/visitors/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

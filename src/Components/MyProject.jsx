@@ -72,7 +72,7 @@ const MyProject = () => {
             <div className="project-card">
               <div className="image-wrapper">
                <img
-                  src={typeof item.pic === 'string' && item.pic.startsWith('/media') ? `/media/${item.pic}` : item.pic}
+                  src={typeof item.pic === 'string' && item.pic.startsWith('/media') ? `${baseURL}${item.pic}` : item.pic}
                   alt={item.title}
                   className="project-img"
                 />

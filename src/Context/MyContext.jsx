@@ -29,7 +29,7 @@ export const MyProvider = ({ children }) => {
   const [Srolldata, setsroll] = useState(defaultsrolldata);
   const [ProjectURL, setProjectURL] = useState(defaultProjectURLdata);
 
-  const baseURL = "";
+  const baseURL = "http://3.83.228.251";
 
   useEffect(() => {
     // Fetch landing paragraph

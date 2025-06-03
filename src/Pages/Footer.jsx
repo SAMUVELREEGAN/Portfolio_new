@@ -100,7 +100,7 @@ const Footer = () => {
           {ProjectURL.map((item, index) => (
             <div key={index} className='mb-3'>
               <h5>{item.pro_name}</h5>
-              <a href={item.pro_url} target="_blank" rel="noopener noreferrer" style={{overflow:'hidden'}}>
+              <a href={item.pro_url} target="_blank" rel="noopener noreferrer" style={{width:"250px"}}>
                 {item.pro_url}
               </a>
             </div>

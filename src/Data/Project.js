@@ -4,6 +4,7 @@ import pic2 from "../assets/pro (1).jpg";
 import pic3 from "../assets/pro (1).png";
 import pic4 from "../assets/pro (2).jpg";
 import pic5 from "../assets/ani1.jpg";
+import pic from "../assets/ani1.jpg";
 
 export const Project = [
   {

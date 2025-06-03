@@ -1,6 +1,7 @@
 import "./Contact.css";
 import { useState, useContext, useRef } from "react";
 import { MyContext } from "../Context/MyContext";
+import pddf from '../assets/SAM _Node & Python.pdf'
 import {
   FaPhone,
   FaEnvelope,
@@ -106,7 +107,8 @@ const Contact = () => {
     <>
       <div className="form-group">
         <a
-          href={MyContact.mypdf}
+          // href={MyContact.mypdf}
+          href={pddf}
           download="Samuvel_Reegan_Resume.pdf"
           className="resume-btn download-btn"
           title="Download Resume"
